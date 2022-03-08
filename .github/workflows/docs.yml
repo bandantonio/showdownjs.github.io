@@ -1,0 +1,15 @@
+name: documentation
+
+on: [repository_dispatch]
+
+jobs:
+  build_docs:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Ping pong
+        id: ping
+        run: |
+          echo "Hello World"
