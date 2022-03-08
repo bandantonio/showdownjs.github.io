@@ -11,4 +11,4 @@ jobs:
 
       - name: Ping pong
         id: ping
-        run: echo ${{ github.event.client_payload }}
+        run: echo ${{ github.event.client_payload.source }}
