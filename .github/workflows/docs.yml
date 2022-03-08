@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_docs:
-    name: Build documentation
+    name: 📚 Build documentation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout showdown repo
@@ -16,6 +16,21 @@ jobs:
           repository: bandantonio/showdown
           path: repo
       
-      - name: test folder
+      - name: ➕ Copy website artifacts
+        id: website
         run: |
-          cd repo && ls
+          mkdir -p public/docs
+          cp -R ./website/* ./public
+      
+      - name: 👷 📚 Build documentation
+        id: build_docs
+        run: |
+          docker run --rm -v ${PWD}/repo:/docs squidfunk/mkdocs-material build
+          cp -R ./repo/public/* ./public
+          rm -rf repo
+
+      - name: 🚀 Deploy to GitHub Pages 
+        if: steps.build_docs.outcome == 'success'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
