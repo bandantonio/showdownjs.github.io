@@ -11,5 +11,6 @@ jobs:
 
       - name: Ping pong
         id: ping
+        if: github.event.action == "build_docs"
         run: |
-          echo "Hello World"
+          echo "repository_dispatch triggered - Hello World"
