@@ -10,6 +10,8 @@ jobs:
     name: 📚 Build documentation
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Checkout showdown repo
         uses: actions/checkout@v3
         with:
