@@ -1,7 +1,7 @@
 name: documentation
 
 on:
-  repository_dispatch
+  repository_dispatch:
     types: [ build_docs ]
 
 jobs:
