@@ -14,4 +14,7 @@ jobs:
 
       - name: Ping pong
         id: ping
-        run: echo ${{ github.event.client_payload.source }}
+        run: |
+          echo "Event triggered by $GITHUB_EVENT_NAME"
+          echo "Dispatch type ${{ github.event.action }}"
+          echo "payload: ${{ toJson(github.event) }}"
