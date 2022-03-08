@@ -1,6 +1,8 @@
 name: documentation
 
-on: [repository_dispatch]
+on:
+  repository_dispatch
+    types: [ build_docs ]
 
 jobs:
   build_docs:
@@ -11,6 +13,5 @@ jobs:
 
       - name: Ping pong
         id: ping
-        if: github.event.action == "build_docs"
         run: |
           echo "repository_dispatch triggered - Hello World"
