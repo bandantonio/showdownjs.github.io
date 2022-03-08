@@ -1,8 +1,6 @@
 name: documentation
 
-on:
-  repository_dispatch:
-    types: [ build_docs ]
+on: [ repository_dispatch ]
 
 jobs:
   build_docs:
@@ -13,5 +11,6 @@ jobs:
 
       - name: Ping pong
         id: ping
-        run: |
-          echo "repository_dispatch triggered - Hello World"
+        env:
+          MESSAGE: ${{ github.event }}
+        run: echo $MESSAGE
