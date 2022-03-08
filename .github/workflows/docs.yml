@@ -11,6 +11,4 @@ jobs:
 
       - name: Ping pong
         id: ping
-        env:
-          MESSAGE: ${{ github.event.client_payload }}
-        run: echo $MESSAGE
+        run: echo ${{ github.event.client_payload }}
