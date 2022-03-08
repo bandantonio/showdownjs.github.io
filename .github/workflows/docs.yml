@@ -15,5 +15,7 @@ jobs:
         with:
           repository: bandantonio/showdown
           path: repo
+      
+      - name: test folder
         run: |
           cd repo && ls
