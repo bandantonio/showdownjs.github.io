@@ -1,9 +1,11 @@
 name: documentation
 
 on:
+  push:
+    branches:    
+      - 'main'
   repository_dispatch:
     types: [ build_docs ]
-
 
 jobs:
   build_docs:
