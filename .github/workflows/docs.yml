@@ -29,7 +29,6 @@ jobs:
         id: build_docs
         run: |
           docker run --rm -v ${PWD}/repo:/docs squidfunk/mkdocs-material build
-          rsync -avh ./repo/public ./public
           rsync -avh ./repo/public/* ./public --delete
 
       - name: 🚀 Deploy to GitHub Pages 
