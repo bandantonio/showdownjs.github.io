@@ -22,13 +22,13 @@ jobs:
         id: website
         run: |
           mkdir -p public/docs
-          cp -R ./website/* ./public
+          rsync -av --progress ./ ./public --exclude .github --exclude .gitignore --exclude README.md
       
       - name: 👷 📚 Build documentation
         id: build_docs
         run: |
           docker run --rm -v ${PWD}/repo:/docs squidfunk/mkdocs-material build
-          cp -R ./repo/public/* ./public
+          rsync -av --progress ./repo/public ./public
 
       - name: 🚀 Deploy to GitHub Pages 
         if: steps.build_docs.outcome == 'success'
