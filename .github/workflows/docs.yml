@@ -23,7 +23,7 @@ jobs:
       - name: ➕ Copy website artifacts
         id: website
         run: |
-          rsync -acvh ./ ./public --exclude README.md --exclude repo
+          rsync -acvh ./ ./public --exclude README.md --exclude repo --delete
       
       - name: 👷 📚 Build documentation
         id: build_docs
