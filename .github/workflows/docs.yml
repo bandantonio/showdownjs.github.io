@@ -15,11 +15,12 @@ jobs:
 
       - name: Deployment information
         env:
+          EVENT: ${{ github.event }}
           AUTHOR: ${{ github.event.client_payload.author }}
           COMMIT: ${{ github.event.client_payload.commit }}
           COMMIT_MSG: ${{ github.event.client_payload.message }}
         run: |
-          echo "$AUTHOR deployed <a href='https://github.com/$AUTHOR/showdown/commit/$COMMIT'>$COMMIT_MSG</a>"
+          echo "$AUTHOR deployed https://github.com/$AUTHOR/showdown/commit/$COMMIT with the message: '$COMMIT_MSG'"
 
       - name: Checkout showdown repo
         uses: actions/checkout@v3
